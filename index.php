@@ -17,7 +17,7 @@ $f3 -> route('GET /', function ()
 {
     //echo '<h1>Hello, world</h1>';
     $view = new Template();
-    echo $view -> render('view/home.html');
+    echo $view -> render('views/home.html');
 }
 );
 $f3 -> run();
