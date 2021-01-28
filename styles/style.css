@@ -1,4 +1,11 @@
+/*
+Author Thanh Tran
+Description: Custom styles for dating web page
+ */
 
+/*
+Header style
+ */
 h1{
     color: pink;
     margin: auto;
@@ -6,16 +13,25 @@ h1{
 h4 {
     margin: auto;
 }
+/*
+images styles
+ */
 img {
     border-radius: 10%;
     height: 100%;
     width: 100%;
 }
+/*
+blockquote styles
+ */
 blockquote {
     font-style: italic;
     margin-left: 50px;
     padding-top: 20px;
 }
+/*
+button styles
+ */
 button {
     margin-left: auto;
     margin-right: auto;

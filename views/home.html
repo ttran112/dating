@@ -1,7 +1,11 @@
-<!-- home.html-->
+<!-- Author: Thanh Tran
+    Description: create a dating web page
+    link: home.html
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,58 +20,60 @@
 </head>
 <body>
 
-<!--<nav class="navbar fixed-top bg-dark navbar-dark navbar-expand-lg m-0" id="navbar">
-    <a class="navbar-brand" href="#">My Dating Website</a>
-</nav> -->
-<div>
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Love Hunt</a>
-    </div>
-</nav>
-    <div class="container-fluid border">
+<!-- main div for all div inside it -->
+    <div id="main">
+        <!-- nav bar -->
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Love Hunt</a>
+            </div>
+        </nav>
 
-        <div class="row">
-            <div class="col justify-content-center m-5">
-                <div class="row">
-                    <h1 class="py-2">Love Hunt</h1>
+        <!-- start of container div -->
+        <div class="container-fluid border">
 
-                    <p>A you a single and ready for mingle. At <strong>Love Hunt</strong> you'll meet the perfect love of
-                       your life. We have the highest success rate of couples on the web. User's are matched by interest,
-                        personality, and location. Find out why so many others have found love on our site!</p>
-                </div>
+            <div class="row"> <!-- start of a row div that contain 2 columns -->
 
-                <div class="row py-2">
+                <div class="col justify-content-center m-5"> <!-- column 1-->
+                    <div class="row">
+                        <!-- header -->
+                        <h1 class="py-2">Love Hunt</h1>
 
-                        <h4>Hear what other said about us</h4>
-
-                    <div class="row border-bottom border-top py-md-2" id="blockquote">
-                        <blockquote>
-                            "I met the love of my life after only a month!" - Blah
-                        </blockquote>
-                        <blockquote>
-                            "It was so easy to set up and profile and start meeting people. I didn't realize how many others were
-                            looking for love in my area." - blah
-                        </blockquote>
-                        <blockquote>
-                            "Just try it! You'll neve be the same!" - blah
-                        </blockquote>
+                        <p>A you a single and ready for mingle. At <strong>Love Hunt</strong> you'll meet the perfect love of
+                           your life. We have the highest success rate of couples on the web. User's are matched by interest,
+                            personality, and location. Find out why so many others have found love on our site!</p>
                     </div>
+
+                    <div class="row py-2"> <!-- header for blockquotes -->
+
+                            <h4>Hear what other said about us</h4>
+
+                        <div class="row border-bottom border-top py-md-2" id="blockquote"> <!-- start of blockquotes -->
+                            <blockquote>
+                                "I met the love of my life after only a month!" - Blah
+                            </blockquote>
+                            <blockquote>
+                                "It was so easy to set up and profile and start meeting people. I didn't realize how many others were
+                                looking for love in my area." - blah
+                            </blockquote>
+                            <blockquote>
+                                "Just try it! You'll neve be the same!" - blah
+                            </blockquote>
+                        </div>
+                    </div> <!-- end of blockquote -->
+                    <div class="row py-5"> <!-- creat a button -->
+                        <button type="button" class="btn btn-info">Create Your Profile!</button>
+                    </div>
+
+                </div> <!-- end of 1st main column -->
+
+                <div class="col m-5"> <!-- 2nd main column that contain image -->
+                    <img src="images/dating2.png" alt="dating">
                 </div>
-                <div class="row py-5">
-                    <button type="button" class="btn btn-info">Create Your Profile!</button>
-                </div>
-
             </div>
-
-            <div class="col m-5">
-                <img src="images/dating2.png" alt="dating">
-            </div>
-
-
-        </div>
-    </div>
-</div>
+        </div> <!-- end of container -->
+    </div> <!-- end of main -->
+<!-- scripts input -->
     <script src="scripts/jquery.slim.min.js"></script>
     <script src="scripts/popper.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
