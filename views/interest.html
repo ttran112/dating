@@ -11,26 +11,31 @@
         <h2>Interest</h2>
         <hr>
         <form method="post" action="summary">
-            <fieldset class="form-check">
-                <legend>Indoor Interest</legend>
+            <div class="row">
+
                 <!--<div class="container">-->
-                    <div class="col-4">
-                        <repeat group=" {{ @indoors }}" value="{{ @indoor }}">
-                            <input type="checkbox" id="indoor" name="indoors[]" value=" {{ @indoor }}">
-                            <label for="indoor"> {{ @indoor }}</label>
-                        </repeat>
-                    </div>
-            </fieldset>
-            <fieldset class="form-check">
-                <legend>Outdoor Interest</legend>
+                <div class="col-md-4">
+                    <fieldset class="form-check">
+                        <legend>Indoor Interest</legend>
+                    <repeat group=" {{ @indoors }}" value="{{ @indoor }}">
+                        <input type="checkbox" id="indoor" name="indoors[]" value=" {{ @indoor }}">
+                        <label for="indoor"> {{ @indoor }}</label> <br>
+                    </repeat>
+                    </fieldset>
+                </div>
+
                 <!--<div class="container">-->
-                <div class="col-4">
+                <div class="col-md-4">
+                    <fieldset class="form-check">
+                        <legend>Outdoor Interest</legend>
                     <repeat group=" {{ @outdoors }}" value="{{ @outdoor }}">
                         <input type="checkbox" id="outdoor" name="outdoors[]" value=" {{ @outdoor }}">
-                        <label for="outdoor"> {{ @outdoor }}</label>
+                        <label for="outdoor"> {{ @outdoor }}</label> <br>
                     </repeat>
+                    </fieldset>
                 </div>
-            </fieldset>
+            </div>
+
             <div class="d-grid d-md-flex justify-content-md-end">
                 <button type="submit" class="btn btn-info">Next></button>
             </div>

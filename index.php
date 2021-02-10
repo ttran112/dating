@@ -86,7 +86,7 @@ $f3 -> route('GET|POST /interest', function ($f3)
     if(isset($_POST['bio'])) {
         $_SESSION['bio'] = $_POST['bio'];
     }
-    var_dump($_POST);
+    //var_dump($_POST);
     $view = new Template();
     echo $view -> render('views/interest.html');
 }
