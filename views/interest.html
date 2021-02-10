@@ -1,0 +1,182 @@
+<include href="views/header.html"></include>
+<body>
+<div id="info-main" class="container-fluid">
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{@BASE}}">Love Hunt</a>
+        </div>
+    </nav>
+    <br>
+    <div class="container border">
+        <h2>Interest</h2>
+        <hr>
+        <form method="post" action="summary">
+            <fieldset class="form-check">
+                <legend>Indoor Interest</legend>
+                <!--<div class="container">-->
+                    <div class="col-4">
+                        <repeat group=" {{ @indoors }}" value="{{ @indoor }}">
+                            <input type="checkbox" id="indoor" name="indoors[]" value=" {{ @indoor }}">
+                            <label for="indoor"> {{ @indoor }}</label>
+                        </repeat>
+                    </div>
+            </fieldset>
+            <fieldset class="form-check">
+                <legend>Outdoor Interest</legend>
+                <!--<div class="container">-->
+                <div class="col-4">
+                    <repeat group=" {{ @outdoors }}" value="{{ @outdoor }}">
+                        <input type="checkbox" id="outdoor" name="outdoors[]" value=" {{ @outdoor }}">
+                        <label for="outdoor"> {{ @outdoor }}</label>
+                    </repeat>
+                </div>
+            </fieldset>
+            <div class="d-grid d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-info">Next></button>
+            </div>
+            <br>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+               <!-- <div class="row">
+                    <div class="col">
+                        <input class='form-check-input'
+                               type='checkbox' name='indoor[]'
+                               id='1' value='tv' >
+                        <label class='form-check-label'
+                               for='1'>tv</label>
+                    </div>
+                    <div class="col">
+                        <input class='form-check-input'
+                               type='checkbox' name='indoor[]'
+                               id='2' value='movies' >
+                        <label class='form-check-label'
+                               for='2'>movies</label>
+                    </div>
+                    <div class="col">
+                        <input class='form-check-input'
+                               type='checkbox' name='indoor[]'
+                               id='3' value='movies' >
+                        <label class='form-check-label'
+                               for='3'>movies</label>
+                    </div>
+                    <div class="col">
+                        <input class='form-check-input'
+                               type='checkbox' name='indoor[]'
+                               id='4' value='movies' >
+                        <label class='form-check-label'
+                               for='4'>movies</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <input class='form-check-input'
+                               type='checkbox' name='indoor[]'
+                               id='5' value='tv' >
+                        <label class='form-check-label'
+                               for='5'>tv</label>
+                    </div>
+                    <div class="col">
+                        <input class='form-check-input'
+                               type='checkbox' name='indoor[]'
+                               id='6' value='movies' >
+                        <label class='form-check-label'
+                               for='6'>movies</label>
+                    </div>
+                    <div class="col">
+                        <input class='form-check-input'
+                               type='checkbox' name='indoor[]'
+                               id='7' value='movies' >
+                        <label class='form-check-label'
+                               for='7'>movies</label>
+                    </div>
+                    <div class="col">
+                        <input class='form-check-input'
+                               type='checkbox' name='indoor[]'
+                               id='8' value='movies' >
+                        <label class='form-check-label'
+                               for='8'>movies</label>
+                    </div>
+                </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-check">
+                <legend>Outdoor Interest</legend>
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col">
+                            <input class='form-check-input'
+                                   type='checkbox' name='outdoor[]'
+                                   id='9' value='tv' >
+                            <label class='form-check-label'
+                                   for='9'>tv</label>
+                        </div>
+                        <div class="col">
+                            <input class='form-check-input'
+                                   type='checkbox' name='outdoor[]'
+                                   id='10' value='movies' >
+                            <label class='form-check-label'
+                                   for='10'>movies</label>
+                        </div>
+                        <div class="col">
+                            <input class='form-check-input'
+                                   type='checkbox' name='outdoor[]'
+                                   id='11' value='movies' >
+                            <label class='form-check-label'
+                                   for='11'>movies</label>
+                        </div>
+                        <div class="col">
+                            <input class='form-check-input'
+                                   type='checkbox' name='outdoor[]'
+                                   id='12' value='movies' >
+                            <label class='form-check-label'
+                                   for='12'>movies</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <input class='form-check-input'
+                                   type='checkbox' name='outdoor[]'
+                                   id='13' value='tv' >
+                            <label class='form-check-label'
+                                   for='13'>tv</label>
+                        </div>
+                        <div class="col">
+                            <input class='form-check-input'
+                                   type='checkbox' name='outdoor[]'
+                                   id='14' value='movies' >
+                            <label class='form-check-label'
+                                   for='14'>movies</label>
+                        </div>
+                        <div class="col">
+                            <input class='form-check-input'
+                                   type='checkbox' name='outdoor[]'
+                                   id='15' value='movies' >
+                            <label class='form-check-label'
+                                   for='15'>movies</label>
+                        </div>
+                        <div class="col">
+                            <input class='form-check-input'
+                                   type='checkbox' name='outdoor[]'
+                                   id='16' value='movies' >
+                            <label class='form-check-label'
+                                   for='16'>movies</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="d-grid d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-info">Next></button>
+            </div>
+            <br>
+        </form>
+    </div>
+</div>
+</body>
+</html>
