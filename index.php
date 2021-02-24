@@ -36,48 +36,65 @@ $f3 -> route('GET|POST /personal', function ($f3)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-//get post array for first name, last name, age,gender and phone
-        $userFirstName = $_POST['fname'];
-        $userLastName = $_POST['lname'];
-//        $userAge = $_POST['age'];
+        //get post array for first name, last name, age,gender and phone
+        $userFirstName = trim($_POST['fname']);
+        $userLastName = trim($_POST['lname']);
+        $userAge = $_POST['age'];
 //        $userGender = $_POST['gender'];
 //        $userPhone = $_POST['phone'];
 
-//if first name valid store in session
+        //if first name valid store in session
         if (validName($userFirstName)) {
             $_SESSION['fname'] = $userFirstName;
-        }
-        else {//not valid firstname
-            $f3 -> set('errors["fname"]', "Please enter a name!!");
-        }
-//if last name valid store in session
-        if (validName($userLastName)) {
-            $_SESSION['lname'] = $userLastName;
-        }
-        else {//not valid last name
-            $f3 -> set('errors["lname"]', "Please enter a name");
+        } else {//not valid firstname
+            $f3->set('errors["fname"]', "Please enter a name!! and must be valid");
         }
 
+        //if last name valid store in session
+        if (validName($userLastName)) {
+            $_SESSION['lname'] = $userLastName;
+        } else {//not valid last name
+            $f3->set('errors["lname"]', "Please enter a name!! and name must be valid");
+        }
+
+        //if age is valid and in range 18 -118
+        if (validAge($userAge) && $userAge >= 18 && $userAge <= 118) {
+            $_SESSION['age'] = $userAge;
+        } //invalid name or not in range
+        else {
+            $f3->set('errors["age"]', "Please enter a age (age in range 18-118)");
+        }
+
+        //if gender is valid store in a session
+//        if(validGenders($userGender)) {
+//            $_SESSION['gender'] = $userGender;
+//        }
+        //not valid gender
+//        else {
+//            $f3->set('errors["gender"]', "Select your gender");
+//        }
+
 //If there are no errors, redirect to /order2
-        if(empty($f3->get('errors'))) {
+        if (empty($f3->get('errors'))) {
             $f3->reroute('/profile');  //GET
         }
+    }
 
 
 //the name in pudt is not valid
 
 //set the value
-//$f3->set('gender', getGender());
+//        $f3->set('gender', getGender());
 
         $f3->set('fname', isset($userFirstName) ? $userFirstName : "");
         $f3->set('lname', isset($userLastName) ? $userLastName : "");
-//$f3->set('age', isset($userAge) ? $userAge : "");
-//$f3->set('gender', isset($userGender) ? $userGender : "");
+        $f3->set('age', isset($userAge) ? $userAge : "");
+//        $f3->set('gender', isset($userGender) ? $userGender : "");
 //$f3->set('phone', isset($userPhone) ? $userPhone : "");
 
         $view = new Template();
         echo $view->render('views/personalinfo.html');
-    }
+
 }
 );
 //route for profile

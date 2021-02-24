@@ -6,11 +6,16 @@ function validName($name) {
 }
 
 function validAge($age) {
-
+    return !empty($age) && is_numeric($age);
 }
 
-function validPhone($phone){
+//function validGenders($gender){
+//    $validGenders = getGender();
+//    return in_array($gender, $validGenders);
+//}
 
+function validPhone($phone){
+    return !empty($phone) &&preg_match("/^\d{10}$/",$phone);
 }
 
 function validEmail($email){
