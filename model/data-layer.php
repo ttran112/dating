@@ -5,9 +5,9 @@
  */
 //array list for gender
 
-//function getGender(){
-//    return array('Male','Female',"Other");
-//}
+function getGenders(){
+    return array('Male','Female',"Other");
+}
 
 //array list of states
 function getState(){
