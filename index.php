@@ -40,7 +40,7 @@ $f3 -> route('GET|POST /personal', function ($f3)
         $userFirstName = trim($_POST['fname']);
         $userLastName = trim($_POST['lname']);
         $userAge = $_POST['age'];
-        $userGender = $_POST['gender'];
+        //$userGender = $_POST['gender'];
         $userPhone = $_POST['phone'];
 
         //if first name valid store in session
@@ -65,14 +65,20 @@ $f3 -> route('GET|POST /personal', function ($f3)
             $f3->set('errors["age"]', "Please enter a age (age in range 18-118)");
         }
 
-        //if gender is valid store in a session
-        if(validGenders($userGender)) {
-            $_SESSION['gender'] = $userGender;
+        //check if gender is slect or not
+        if (isset($_POST['gender'])){
+            $userGender = $_POST['gender'];
+
+            //if gender is valid store in a session
+            if(validGenders($userGender)) {
+                $_SESSION['gender'] = $userGender;
+            }
+            //not valid gender
+            else {
+                $f3->set('errors["gender"]', "Go away, Evildoer");
+            }
         }
-        //not valid gender
-        else {
-            $f3->set('errors["gender"]', "Please Select your gender");
-        }
+
 
         //if valid phone number
         if(validPhone($userPhone)){
@@ -132,25 +138,6 @@ $f3 -> route('GET|POST /profile', function ($f3)
     //set value for state
     $f3->set('states',getState());
     $f3->set('userEmail', isset($userEmail) ? $userEmail : "");
-
-    //get post array for fname lname age gender phone
-//    if(isset($_POST['fname'])) {
-//        $_SESSION['fname'] = $_POST['fname'];
-//    }
-//    if(isset($_POST['lname'])) {
-//        $_SESSION['lname'] = $_POST['lanme'];
-//    }
-//    if(isset($_POST['age'])) {
-//        $_SESSION['age'] = $_POST['age'];
-//    }
-//    if(isset($_POST['gender'])) {
-//        $_SESSION['gender'] = $_POST['gender'];
-//    }
-//    if(isset($_POST['phone'])) {
-//        $_SESSION['phone'] = $_POST['phone'];
-//    }
-
-
 
 
     //var_dump($_POST);

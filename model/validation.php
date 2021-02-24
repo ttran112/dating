@@ -12,6 +12,14 @@ function validAge($age) {
 function validGenders($gender){
     $validGenders = getGenders();
     return in_array($gender, $validGenders);
+//    $validGenders = getGenders();
+//    foreach ($selectedGender as $selected) {
+//        if(!in_array($selected,$validGenders)){
+//            return false;
+//        }
+//    }
+//    return true;
+
 }
 
 function validPhone($phone){

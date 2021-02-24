@@ -50,7 +50,7 @@
                         <!--gender-->
                         <div class="form-group">
                             <label>Select Your Gender</label>
-                            <div class="col-sm-4">
+                            <div >
                                 <repeat group="{{ @genders }}" value="{{ @gender }}">
                                         <label><input type="radio"
                                                       name="gender"
@@ -58,17 +58,14 @@
                                                   value="{{ @gender }}"
                                             <check if="{{ @gender == @userGender }}">checked</check>>
                                             {{ ucfirst(@gender) }}
-                                            </input></label>
-
+                                            </input></label> &nbsp; &nbsp; &nbsp;
                                 </repeat>
                             </div>
-                            <!--<check if="{{ isset(@errors[ 'gender' ]) }}">
+                            <check if="{{ isset(@errors[ 'gender' ]) }}">
                                 {{ @errors['gender'] }}
-                            </check>-->
-
+                            </check>
                         </div>
 
-                        <br>
                         <!--phone number-->
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
