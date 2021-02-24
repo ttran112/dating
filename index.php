@@ -28,8 +28,8 @@ $f3 -> route('GET|POST /', function ()
 {
     $view = new Template();
     echo $view -> render('views/home.html');
-}
-);
+});
+
 //route for personal info
 $f3 -> route('GET|POST /personal', function ($f3)
 {
@@ -41,7 +41,7 @@ $f3 -> route('GET|POST /personal', function ($f3)
         $userLastName = trim($_POST['lname']);
         $userAge = $_POST['age'];
 //        $userGender = $_POST['gender'];
-//        $userPhone = $_POST['phone'];
+        $userPhone = $_POST['phone'];
 
         //if first name valid store in session
         if (validName($userFirstName)) {
@@ -74,51 +74,85 @@ $f3 -> route('GET|POST /personal', function ($f3)
 //            $f3->set('errors["gender"]', "Select your gender");
 //        }
 
-//If there are no errors, redirect to /order2
+        //if valid phone number
+        if(validPhone($userPhone)){
+            $_SESSION['phone'] = $userPhone;
+        } //invalid name or not in range
+        else {
+            $f3->set('errors["phone"]', "Please enter 10 digits phone number");
+        }
+
+
+//If there are no errors, redirect to /profile
         if (empty($f3->get('errors'))) {
             $f3->reroute('/profile');  //GET
         }
     }
 
 
-//the name in pudt is not valid
 
-//set the value
+       //set the value
 //        $f3->set('gender', getGender());
 
         $f3->set('fname', isset($userFirstName) ? $userFirstName : "");
         $f3->set('lname', isset($userLastName) ? $userLastName : "");
         $f3->set('age', isset($userAge) ? $userAge : "");
 //        $f3->set('gender', isset($userGender) ? $userGender : "");
-//$f3->set('phone', isset($userPhone) ? $userPhone : "");
+        $f3->set('phone', isset($userPhone) ? $userPhone : "");
 
+
+        //display a view
         $view = new Template();
         echo $view->render('views/personalinfo.html');
 
-}
-);
+});
 //route for profile
 $f3 -> route('GET|POST /profile', function ($f3)
 {
+
+    //set email
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //get data from post array
+        $userEmail = $_POST['email'];
+
+        //valid email
+        if (validEmail($userEmail)) {
+            $_SESSION['email'] = $userEmail;
+        }
+        //not valid email
+        else {
+            $f3->set('errors["email"]', "Please enter a email and it need to be valid");
+        }
+
+        //If there are no errors, redirect to /profile
+        if (empty($f3->get('errors'))) {
+            $f3->reroute('/interest');  //GET
+        }
+    }
     //set value for state
     $f3->set('states',getState());
+    $f3->set('email', isset($userEmail) ? $userEmail : "");
+
+
 
     //get post array for fname lname age gender phone
-    if(isset($_POST['fname'])) {
-        $_SESSION['fname'] = $_POST['fname'];
-    }
-    if(isset($_POST['lname'])) {
-        $_SESSION['lname'] = $_POST['lanme'];
-    }
-    if(isset($_POST['age'])) {
-        $_SESSION['age'] = $_POST['age'];
-    }
-    if(isset($_POST['gender'])) {
-        $_SESSION['gender'] = $_POST['gender'];
-    }
-    if(isset($_POST['phone'])) {
-        $_SESSION['phone'] = $_POST['phone'];
-    }
+//    if(isset($_POST['fname'])) {
+//        $_SESSION['fname'] = $_POST['fname'];
+//    }
+//    if(isset($_POST['lname'])) {
+//        $_SESSION['lname'] = $_POST['lanme'];
+//    }
+//    if(isset($_POST['age'])) {
+//        $_SESSION['age'] = $_POST['age'];
+//    }
+//    if(isset($_POST['gender'])) {
+//        $_SESSION['gender'] = $_POST['gender'];
+//    }
+//    if(isset($_POST['phone'])) {
+//        $_SESSION['phone'] = $_POST['phone'];
+//    }
+
+
 
 
     //var_dump($_POST);

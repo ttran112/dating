@@ -10,7 +10,7 @@
     </div>
     <br>
 
-        <form method="post" action="interest">
+        <form method="post" action="#">
             <div class="container border">
 
             <div class="row"> <!-- start of a row div that contain 2 columns -->
@@ -23,13 +23,16 @@
                         <!--name -->
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" name="email">
+                            <input type="text" class="form-control" id="email" name="email" value="{{ @userEmail }}">
+                            <check if=" {{ isset( @errors['email'] ) }}">
+                                {{ @errors['email'] }}
+                            </check>
                         </div>
 
                     </fieldset>
                     <!--State-->
                     <fieldset class="form-group  p-2">
-                        <legend>State</legend>
+                        <legend>State(optional)</legend>
 
                         <select class="form-control" id="state" name="state" >
                             <option value='none'>Select a State</option>
@@ -40,7 +43,7 @@
                         </select>
                     </fieldset>
                     <fieldset>
-                        <legend>Seeking</legend>
+                        <legend>Seeking(optional)</legend>
                         <div class="form-check row">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="seeking"
@@ -59,7 +62,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="bio">Biography</label>
+                        <label for="bio">Biography(optional)</label>
                         <textarea class="form-control" id="bio" name="bio" rows="3"></textarea>
                     </div>
                 </div>

@@ -46,7 +46,7 @@
                             </check>
                         </div>
                         <!--gender-->
-                        <label>Gender</label>
+                        <label>Gender(optional)</label>
                         <div class="form-check row">
 
                             <div class="form-check">
@@ -80,7 +80,10 @@
                         <!--phone number-->
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="text" class="form-control" id="phone" name="phone">
+                            <input type="number" class="form-control" id="phone" name="phone" value="{{ @userPhone}}" maxlength="10" >
+                            <check if=" {{ isset( @errors['phone'] ) }}">
+                                {{ @errors['phone'] }}
+                            </check>
                         </div>
                     </fieldset>
 

@@ -15,11 +15,11 @@ function validAge($age) {
 //}
 
 function validPhone($phone){
-    return !empty($phone) &&preg_match("/^\d{10}$/",$phone);
+    return !empty($phone) && preg_match("/^\d{10}$/",$phone);
 }
 
 function validEmail($email){
-
+    return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
 function validOutDoor($outdoor) {
