@@ -32,7 +32,7 @@
                     </fieldset>
                     <!--State-->
                     <fieldset class="form-group  p-2">
-                        <legend>State(optional)</legend>
+                        <label>State(optional)</label>
 
                         <select class="form-control" id="state" name="state" >
                             <option value='none'>Select a State</option>
@@ -42,22 +42,26 @@
                             <!--<option value="washington">Washington</option>-->
                         </select>
                     </fieldset>
+                    <!--seeking-->
                     <fieldset>
-                        <legend>Seeking(optional)</legend>
-                        <div class="form-check row">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="seeking"
-                                       id="gender" value="Male" >
-                                <label class="form-check-label" for="gender">
-                                    Male
-                                </label>  &nbsp; &nbsp; &nbsp;
-                                <input class="form-check-input" type="radio" name="seeking"
-                                       id="female" value="female" >
-                                <label class="form-check-label" for="female">
-                                    Female
-                                </label>
+                        <div class="form-group">
+                            <label>Select Seeking Gender (optional)</label>
+                            <div >
+                                <repeat group="{{ @seekings }}" value="{{ @seeking }}">
+                                    <label><input type="radio"
+                                                  name="seeking"
+                                                  id="{{ @seeking }}"
+                                                  value="{{ @seeking }}"
+                                        <check if="{{ @seeking == @userSeeking }}">checked</check>>
+                                        {{ ucfirst(@seeking) }}
+                                        </input></label> &nbsp; &nbsp; &nbsp;
+                                </repeat>
                             </div>
+                            <check if="{{ isset(@errors[ 'seeking' ]) }}">
+                                {{ @errors['seeking'] }}
+                            </check>
                         </div>
+
                     </fieldset>
                 </div>
                 <div class="col">

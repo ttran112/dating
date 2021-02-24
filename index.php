@@ -124,19 +124,33 @@ $f3 -> route('GET|POST /profile', function ($f3)
         //valid email
         if (validEmail($userEmail)) {
             $_SESSION['email'] = $userEmail;
-        }
-        //not valid email
+        } //not valid email
         else {
             $f3->set('errors["email"]', "Please enter a email and it need to be valid");
         }
 
-        //If there are no errors, redirect to /profile
-        if (empty($f3->get('errors'))) {
-            $f3->reroute('/interest');  //GET
+        //check if gender is slect or not
+        if (isset($_POST['seeking'])) {
+            $userSeeking = $_POST['seeking'];
+
+            //if gender is valid store in a session
+            if (validGenders($userSeeking)) {
+                $_SESSION['seeking'] = $userSeeking;
+            } //not valid gender
+            else {
+                $f3->set('errors["seeking"]', "Go away, Evildoer");
+            }
+
+            //If there are no errors, redirect to /profile
+            if (empty($f3->get('errors'))) {
+                $f3->reroute('/interest');  //GET
+            }
         }
     }
     //set value for state
     $f3->set('states',getState());
+    $f3->set('seekings', getGenders());
+    $f3->set('userSeeking', isset($userSeeking) ? $userSeeking : "");
     $f3->set('userEmail', isset($userEmail) ? $userEmail : "");
 
 
