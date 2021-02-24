@@ -10,7 +10,7 @@
     </div>
     <br>
 
-    <form method="post" action="profile">
+    <form method="post" action="#">
         <div class="container border">
             <div class="row"> <!-- start of a row div that contain 2 columns -->
 
@@ -23,13 +23,20 @@
                         <!--name -->
                         <div class="form-group">
                             <label for="fname">First Name</label>
-                            <input type="text" class="form-control" id="fname" name="fname">
+                            <input type="text" class="form-control" id="fname" name="fname" value="{{ @userFirstName }}">
+                            <check if=" {{ isset( @errors['fname'] ) }}">
+                                {{ @errors['fname'] }}
+                            </check>
                         </div>
 
                         <div class="form-group">
                             <label for="lname">Last Name</label>
-                            <input type="text" class="form-control" id="lname" name="lname">
+                            <input type="text" class="form-control" id="lname" name="lname" value="{{ @userLastName }}">
+                            <check if=" {{ isset( @errors['lname'] ) }}">
+                                {{ @errors['lname'] }}
+                            </check>
                         </div>
+
                         <!--age-->
                         <div class="form-group">
                             <label for="age">Age</label>

@@ -14,6 +14,7 @@ session_start();
 //require the autoload file
 require_once ('vendor/autoload.php');
 require_once ('model/data-layer.php');
+require_once ('model/validation.php');
 
 
 //create an instance of the Base class
@@ -30,11 +31,53 @@ $f3 -> route('GET|POST /', function ()
 }
 );
 //route for personal info
-$f3 -> route('GET|POST /personal', function ()
+$f3 -> route('GET|POST /personal', function ($f3)
 {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $view = new Template();
-    echo $view -> render('views/personalinfo.html');
+
+//get post array for first name, last name, age,gender and phone
+        $userFirstName = $_POST['fname'];
+        $userLastName = $_POST['lname'];
+//        $userAge = $_POST['age'];
+//        $userGender = $_POST['gender'];
+//        $userPhone = $_POST['phone'];
+
+//if first name valid store in session
+        if (validName($userFirstName)) {
+            $_SESSION['fname'] = $userFirstName;
+        }
+        else {//not valid firstname
+            $f3 -> set('errors["fname"]', "Please enter a name!!");
+        }
+//if last name valid store in session
+        if (validName($userLastName)) {
+            $_SESSION['lname'] = $userLastName;
+        }
+        else {//not valid last name
+            $f3 -> set('errors["lname"]', "Please enter a name");
+        }
+
+//If there are no errors, redirect to /order2
+        if(empty($f3->get('errors'))) {
+            $f3->reroute('/profile');  //GET
+        }
+
+
+//the name in pudt is not valid
+
+//set the value
+//$f3->set('gender', getGender());
+
+        $f3->set('fname', isset($userFirstName) ? $userFirstName : "");
+        $f3->set('lname', isset($userLastName) ? $userLastName : "");
+//$f3->set('age', isset($userAge) ? $userAge : "");
+//$f3->set('gender', isset($userGender) ? $userGender : "");
+//$f3->set('phone', isset($userPhone) ? $userPhone : "");
+
+        $view = new Template();
+        echo $view->render('views/personalinfo.html');
+    }
 }
 );
 //route for profile
