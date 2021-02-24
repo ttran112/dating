@@ -10,32 +10,41 @@
     <div class="container border">
         <h2>Interest</h2>
         <hr>
-        <form method="post" action="summary">
+        <form method="post" action="#">
 
 
                 <!--<div class="container">-->
-                <div class="container">
+
+            <div class="container">
                     <fieldset class="form-check">
                         <legend>Indoor Interest</legend>
-                    <repeat group=" {{ @indoors }}" value="{{ @indoor }}">
-                        <input type="checkbox" id="indoor" name="indoors[]" value=" {{ @indoor }}">
-                        <label for="indoor"> {{ @indoor }}</label>
+
+                        <repeat group=" {{@indoors}}" value="{{@indoor}}">
+                        <label><input type="checkbox"  name="indoors[]" value="{{@indoor}}">{{@indoor}}</label>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
                     </repeat>
+
                     </fieldset>
+                <check if="{{ @errors['indoors'] }}"><span>{{ @errors['indoors'] }}</span></check>
+
+                <!--<check if="{{ @errors['indoors'] }}"><span>{{ @errors['indoors'] }}</span></check>-->
+
                 </div>
 
-                <!--<div class="container">-->
                 <div class="container">
+
                     <fieldset class="form-check">
                         <legend>Outdoor Interest</legend>
-                    <repeat group=" {{ @outdoors }}" value="{{ @outdoor }}">
-                        <input type="checkbox" id="outdoor" name="outdoors[]" value=" {{ @outdoor }}">
+
+                        <repeat group=" {{ @outdoors }}" value="{{ @outdoor }}">
+                        <input type="checkbox" id="outdoor" name="outdoors[]" value="{{ @outdoor }}">
                         <label for="outdoor"> {{ @outdoor }}</label>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     </repeat>
                     </fieldset>
+                    <check if="{{ @errors['indoors'] }}"><span>{{ @errors['indoors'] }}</span></check>
+
                 </div>
 
 

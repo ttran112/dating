@@ -40,7 +40,7 @@ $f3 -> route('GET|POST /personal', function ($f3)
         $userFirstName = trim($_POST['fname']);
         $userLastName = trim($_POST['lname']);
         $userAge = $_POST['age'];
-//        $userGender = $_POST['gender'];
+        //$userGender = $_POST['gender'];
         $userPhone = $_POST['phone'];
 
         //if first name valid store in session
@@ -97,9 +97,11 @@ $f3 -> route('GET|POST /personal', function ($f3)
         $f3->set('fname', isset($userFirstName) ? $userFirstName : "");
         $f3->set('lname', isset($userLastName) ? $userLastName : "");
         $f3->set('age', isset($userAge) ? $userAge : "");
-//        $f3->set('gender', isset($userGender) ? $userGender : "");
+        //$f3->set('gender', isset($userGender) ? $userGender : "");
         $f3->set('phone', isset($userPhone) ? $userPhone : "");
-
+//    if(isset($_POST['gender'])) {
+//        $_SESSION['gender'] = $_POST['gender'];
+//    }
 
         //display a view
         $view = new Template();
@@ -132,6 +134,15 @@ $f3 -> route('GET|POST /profile', function ($f3)
     //set value for state
     $f3->set('states',getState());
     $f3->set('email', isset($userEmail) ? $userEmail : "");
+        if(isset($_POST['state'])) {
+        $_SESSION['state'] = $_POST['state'];
+    }
+    if(isset($_POST['seeking'])) {
+        $_SESSION['seeking'] = $_POST['seeking'];
+    }
+    if(isset($_POST['bio'])) {
+        $_SESSION['bio'] = $_POST['bio'];
+    }
 
 
 
@@ -163,41 +174,61 @@ $f3 -> route('GET|POST /profile', function ($f3)
 //route for interest
 $f3 -> route('GET|POST /interest', function ($f3)
 {
-    //set value for indoor and outdoor
+    //if the form has been submitted
+    if ($_SERVER['REQUEST_METHOD']=='POST') {
+        //if some or all indoor are checked
+        if (isset($_POST['indoors'])){
+            $userIndoors = $_POST['indoors'];
+            //valid indoor interest values
+            if (validIndoor($userIndoors)){
+                $_SESSION['indoors'] = implode(", ",$userIndoors);
+            }
+            //not valid indoor interest
+            else {
+                $f3->set('errors["indoors"]', "Go away, evildoer!") ;
+            }
+        }
+        //if outdoor interest are selected
+        if(isset($_POST['outdoors'])) {
+            $userOutdoor = $_POST['outdoors'];
+            //if selected value are valid
+            if(validOutDoor($userOutdoor)) {
+                $_SESSION['outdoors'] = implode(", ", $userOutdoor);
+            }
+            //selected values are not valid
+            else {
+                $f3->set('errors["outdoors"]', "Go away, evildoer!");
+            }
+
+        }
+
+        //If there are no errors, redirect user to summary page
+        if (empty($f3->get('errors'))) {
+            $f3->reroute('/summary');
+        }
+    }
+        //set value for indoor and outdoor
     $f3->set('indoors',getIndoorInterest());
     $f3->set('outdoors',getOutdoorInterest());
 
-    //get post array for email state seeking and bio
-    if(isset($_POST['email'])) {
-        $_SESSION['email'] = $_POST['email'];
-    }
-    if(isset($_POST['state'])) {
-        $_SESSION['state'] = $_POST['state'];
-    }
-    if(isset($_POST['seeking'])) {
-        $_SESSION['seeking'] = $_POST['seeking'];
-    }
-    if(isset($_POST['bio'])) {
-        $_SESSION['bio'] = $_POST['bio'];
-    }
-    //var_dump($_POST);
+
     $view = new Template();
     echo $view -> render('views/interest.html');
-}
-);
+});
 //route for summary
 $f3 -> route('GET|POST /summary', function ()
 {
     //get post array for indoor and out door interest
-    if(isset($_POST['indoors'])) {
-        $_SESSION['indoors'] = implode(", ",$_POST['indoors']);
-    }
-    if(isset($_POST['outdoors'])) {
-        $_SESSION['outdoors'] = implode(", ", $_POST['outdoors']);
-    }
+//    if(isset($_POST['indoors'])) {
+//        $_SESSION['indoors'] = implode(", ",$_POST['indoors']);
+//    }
+//    if(isset($_POST['outdoors'])) {
+//        $_SESSION['outdoors'] = implode(", ", $_POST['outdoors']);
+//    }
     //var_dump($_POST);
     $view = new Template();
     echo $view -> render('views/summary.html');
+    session_destroy();
 }
 );
 //run fat free

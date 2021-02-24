@@ -22,11 +22,25 @@ function validEmail($email){
     return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
-function validOutDoor($outdoor) {
-
+function validIndoor($selectedIndoors) {
+    $validIndoors = getIndoorInterest();
+    foreach ($selectedIndoors as $selected) {
+        if (!in_array($selected,$validIndoors)){
+            return false;
+        }
+    }
+    return true;
 }
 
-function validIndoor($indoor) {
-
+function validOutDoor($selectedOutdoors) {
+    $validOutdoors = getOutdoorInterest();
+    foreach ($selectedOutdoors as $selected) {
+        if (!in_array($selected,$validOutdoors)){
+            return false;
+        }
+    }
+    return true;
 }
+
+
 
