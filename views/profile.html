@@ -34,7 +34,7 @@
                     <fieldset class="form-group  p-2">
                         <label>State(optional)</label>
 
-                        <select class="form-control" id="state" name="state" >
+                        <select class="form-control" id="state" name="state" value=" {{ @userState }}" >
                             <option value='none'>Select a State</option>
                             <repeat group="{{ @states }}" value="{{ @state }}">
                                 <option>{{ @state }}</option>
@@ -67,7 +67,10 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="bio">Biography(optional)</label>
-                        <textarea class="form-control" id="bio" name="bio" rows="3"></textarea>
+                        <textarea class="form-control" id="bio" name="bio" rows="3" value="{{ @userBio }}"></textarea>
+                        <check if=" {{ isset( @errors['bio'] ) }}">
+                            {{ @errors['bio'] }}
+                        </check>
                     </div>
                 </div>
             </div>

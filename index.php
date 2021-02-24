@@ -120,6 +120,8 @@ $f3 -> route('GET|POST /profile', function ($f3)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //get data from post array
         $userEmail = $_POST['email'];
+        $userBio = $_POST['bio'];
+        $userState = $_POST['state'];
 
         //valid email
         if (validEmail($userEmail)) {
@@ -141,6 +143,17 @@ $f3 -> route('GET|POST /profile', function ($f3)
                 $f3->set('errors["seeking"]', "Go away, Evildoer");
             }
 
+            //if bio valid store in session
+            if (validBio($userBio)) {
+                $_SESSION['bio'] = $userBio;
+            } else {//not valid firstname
+                $f3->set('errors["bio"]', "Enter a valid bio");
+            }
+
+            if (isset($_POST['state'])){
+                $_SESSION['state'] = $userState;
+            }
+
             //If there are no errors, redirect to /profile
             if (empty($f3->get('errors'))) {
                 $f3->reroute('/interest');  //GET
@@ -152,6 +165,9 @@ $f3 -> route('GET|POST /profile', function ($f3)
     $f3->set('seekings', getGenders());
     $f3->set('userSeeking', isset($userSeeking) ? $userSeeking : "");
     $f3->set('userEmail', isset($userEmail) ? $userEmail : "");
+    $f3->set('userBio', isset($userBio) ? $userBio : "");
+    $f3->set('userState', isset($userState)? $userState: "");
+
 
 
     //var_dump($_POST);

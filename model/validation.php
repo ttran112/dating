@@ -30,6 +30,10 @@ function validEmail($email){
     return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
+function validBio($bio){
+    return preg_match("/.{2,60}$/", $bio);
+}
+
 function validIndoor($selectedIndoors) {
     $validIndoors = getIndoorInterest();
     foreach ($selectedIndoors as $selected) {
