@@ -3,6 +3,11 @@
 /*
  *
  */
+//array list for gender
+
+function getGender(){
+    return array('Male','Female');
+}
 
 //array list of states
 function getState(){
