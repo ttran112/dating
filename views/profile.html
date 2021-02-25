@@ -37,7 +37,13 @@
                         <select class="form-control" id="state" name="state" value=" {{ @userState }}" >
                             <option value='none'>Select a State</option>
                             <repeat group="{{ @states }}" value="{{ @state }}">
-                                <option>{{ @state }}</option>
+                                <option value="{{ @state }}"
+
+                                <check if="{{ @state == @userState }}">
+                                    selected="selected"
+                                </check>
+                                >{{ @state }}
+                                </option>
                             </repeat>
                             <!--<option value="washington">Washington</option>-->
                         </select>
