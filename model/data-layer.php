@@ -20,7 +20,7 @@ function getIndoorInterest() {
 
 //array list function of indoor outdoor
 function getOutdoorInterest() {
-    return array("basketball", "soccer" ,"football","hiking","boat",);
+    return array("basketball", "soccer" ,"football","hiking","boat");
 }
 
 

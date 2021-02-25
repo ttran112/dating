@@ -20,7 +20,7 @@
                         <legend>Indoor Interest</legend>
 
                         <repeat group=" {{@indoors}}" value="{{@indoor}}">
-                        <label><input type="checkbox"  name="indoors[]" value="{{@indoor}}">{{@indoor}}</label>
+                        <label><input type="checkbox"  name="indoors[]" value="{{@indoor}}"> {{@indoor}} </label>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
                     </repeat>
@@ -43,7 +43,7 @@
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     </repeat>
                     </fieldset>
-                    <check if="{{ @errors['indoors'] }}"><span>{{ @errors['indoors'] }}</span></check>
+                    <check if="{{ @errors['outdoors'] }}"><span>{{ @errors['outdoors'] }}</span></check>
 
                 </div>
 

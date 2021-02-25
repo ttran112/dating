@@ -144,11 +144,12 @@ $f3 -> route('GET|POST /profile', function ($f3)
             }
 
             //if bio valid store in session
-            if (validBio($userBio)) {
+            if (isset($userBio)) {
                 $_SESSION['bio'] = $userBio;
-            } else {//not valid firstname
-                $f3->set('errors["bio"]', "Enter a valid bio");
             }
+//            else {//not valid firstname
+//                $f3->set('errors["bio"]', "Enter a valid bio");
+//            }
 
             if (isset($_POST['state'])){
                 $_SESSION['state'] = $userState;
