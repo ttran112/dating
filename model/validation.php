@@ -1,15 +1,18 @@
 <?php
 
 
-function validName($name) {
+function validName($name)
+{
     return !empty($name) && ctype_alpha($name);
 }
 
-function validAge($age) {
+function validAge($age)
+{
     return !empty($age) && is_numeric($age);
 }
 
-function validGenders($gender){
+function validGenders($gender)
+{
     $validGenders = getGenders();
     return in_array($gender, $validGenders);
 //    $validGenders = getGenders();
@@ -22,11 +25,13 @@ function validGenders($gender){
 
 }
 
-function validPhone($phone){
+function validPhone($phone)
+{
     return !empty($phone) && preg_match("/^\d{10}$/",$phone);
 }
 
-function validEmail($email){
+function validEmail($email)
+{
     return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
@@ -34,7 +39,8 @@ function validEmail($email){
 //    return preg_match("/.{2,60}$/", $bio);
 //}
 
-function validIndoor($selectedIndoors) {
+function validIndoor($selectedIndoors)
+{
     $validIndoors = getIndoorInterest();
     foreach ($selectedIndoors as $selected) {
         if (!in_array($selected,$validIndoors)){
@@ -44,7 +50,8 @@ function validIndoor($selectedIndoors) {
     return true;
 }
 
-function validOutDoor($selectedOutdoors) {
+function validOutDoor($selectedOutdoors)
+{
     $validOutdoors = getOutdoorInterest();
     foreach ($selectedOutdoors as $selected) {
         if (!in_array($selected,$validOutdoors)){
