@@ -37,6 +37,7 @@ class Controler
             $userAge = $_POST['age'];
             $userGender = $_POST['gender'];
             $userPhone = $_POST['phone'];
+            $userChoice = $_POST['memberChoice'];
 
             //if first name valid store in session
             if ($validator->validName($userFirstName)) {
@@ -94,17 +95,17 @@ class Controler
 
             //$memberChoice = $_POST['memberChoice'];
 
-            if(isset($_POST['memberChoice']))
+            if(isset($userChoice))
             {
                 //$memberChoice = new PremiumMember();
-                $_SESSION['memberChoice'] = new PremiumMember();
+                $_SESSION['memberChoice'] = $userChoice;//new PremiumMember();
             }
-            else
-            {
-                //$memberChoice = new Member("","",0,"","","","","","");
-                $_SESSION['memberChoice'] = new Member("","",0,"","","","","","");
-
-            }
+//            else
+//            {
+//                //$memberChoice = new Member("","",0,"","","","","","");
+//                $_SESSION['memberChoice'] = new Member("","",0,"","","","","","");
+//
+//            }
 
 //If there are no errors, redirect to /profile
             if (empty($this->_f3->get('errors'))) {
@@ -215,6 +216,7 @@ class Controler
         global $dataLayer;
         global $normalMember;
         global $premiumMember;
+
         //if the form has been submitted
         if ($_SERVER['REQUEST_METHOD']=='POST') {
             //if some or all indoor are checked
@@ -224,6 +226,7 @@ class Controler
                 if ($validator->validIndoor($userIndoors)){
                     $_SESSION['indoors'] = implode(", ",$userIndoors);
                     $_SESSION['premiumMember'] = $premiumMember;
+
                     $indoorString = implode(", ",$userIndoors);
                     //$premiumMember->setInDoorInterests($userIndoors);
                     $_SESSION['premiumMember']->setIndoorInterests($indoorString);
@@ -274,15 +277,29 @@ class Controler
 
         $view = new Template();
         echo $view->render('views/summary.html');
-        if (isset($_POST['memberChoice'])){
+//        if (isset($_POST['memberChoice'])){
+//            print_r($_SESSION['normalMember']);
+//            print_r($_SESSION['premiumMember']);
+//
+//        }
+//        else{
+//            print_r($_SESSION['normalMember']);
+//
+//        }
+        //print_r($_SESSION['normalMember']);
+        //print_r($_SESSION['premiumMember']);
+        //print_r($_SESSION['memberChoice']);
+        if (!isset($_SESSION['memberChoice']))
+        {
+            print_r($_SESSION['normalMember']);
+        }
+        else {
             print_r($_SESSION['normalMember']);
             print_r($_SESSION['premiumMember']);
-
         }
-        else{
-            print_r($_SESSION['normalMember']);
 
-        }
+
+
 
         session_destroy();
 
