@@ -24,7 +24,7 @@ $f3 -> set('DEBUG',3);
 
 
 // define a default route
-$f3 -> route('GET|POST /', function ()
+$f3 -> route('GET /', function ()
 {
     $view = new Template();
     echo $view -> render('views/home.html');
@@ -33,12 +33,13 @@ $f3 -> route('GET|POST /', function ()
 //route for personal info
 $f3 -> route('GET|POST /personal', function ($f3)
 {
+    //var_dump($f3->get('errors'));
+    //var_dump('errors["fname"]');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-
         //get post array for first name, last name, age,gender and phone
-        $userFirstName = trim($_POST['fname']);
-        $userLastName = trim($_POST['lname']);
+        $userFirstName = $_POST['fname'];
+        $userLastName = $_POST['lname'];
         $userAge = $_POST['age'];
         //$userGender = $_POST['gender'];
         $userPhone = $_POST['phone'];
@@ -46,14 +47,16 @@ $f3 -> route('GET|POST /personal', function ($f3)
         //if first name valid store in session
         if (validName($userFirstName)) {
             $_SESSION['fname'] = $userFirstName;
-        } else {//not valid firstname
+        }
+        else {//not valid firstname
             $f3->set('errors["fname"]', "Please enter a name!! and must be valid");
         }
 
         //if last name valid store in session
         if (validName($userLastName)) {
             $_SESSION['lname'] = $userLastName;
-        } else {//not valid last name
+        }
+        else {//not valid last name
             $f3->set('errors["lname"]', "Please enter a name!! and name must be valid");
         }
 
@@ -83,7 +86,8 @@ $f3 -> route('GET|POST /personal', function ($f3)
         //if valid phone number
         if(validPhone($userPhone)){
             $_SESSION['phone'] = $userPhone;
-        } //invalid name or not in range
+        }
+        //invalid name or not in range
         else {
             $f3->set('errors["phone"]', "Please enter 10 digits phone number");
         }
@@ -111,7 +115,8 @@ $f3 -> route('GET|POST /personal', function ($f3)
         $view = new Template();
         echo $view->render('views/personalinfo.html');
 
-});
+}
+);
 //route for profile
 $f3 -> route('GET|POST /profile', function ($f3)
 {
@@ -142,6 +147,7 @@ $f3 -> route('GET|POST /profile', function ($f3)
             else {
                 $f3->set('errors["seeking"]', "Go away, Evildoer");
             }
+        }
 
             //if bio valid store in session
             if (isset($userBio)) {
@@ -159,7 +165,7 @@ $f3 -> route('GET|POST /profile', function ($f3)
             if (empty($f3->get('errors'))) {
                 $f3->reroute('/interest');  //GET
             }
-        }
+
     }
     //set value for state
     $f3->set('states',getState());

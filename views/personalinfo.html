@@ -21,18 +21,20 @@
                         <hr>
 
                         <!--name -->
+
                         <div class="form-group">
-                            <label for="fname">First Name</label>
+                            <label for="fname">First Name
                             <input type="text" class="form-control" id="fname" name="fname" value="{{ @userFirstName }}">
-                            <check if=" {{ isset( @errors['fname'] ) }}">
+                            <check if="{{ isset(@errors['fname']) }}">
                                 {{ @errors['fname'] }}
                             </check>
+                            </label>
                         </div>
 
                         <div class="form-group">
                             <label for="lname">Last Name</label>
                             <input type="text" class="form-control" id="lname" name="lname" value="{{ @userLastName }}">
-                            <check if=" {{ isset( @errors['lname'] ) }}">
+                            <check if=" {{ isset(@errors['lname']) }}">
                                 {{ @errors['lname'] }}
                             </check>
                         </div>
@@ -41,7 +43,7 @@
                         <div class="form-group">
                             <label for="age">Age</label>
                             <input type="number" class="form-control" id="age" name="age" value="{{ @userAge }}">
-                            <check if=" {{ isset( @errors['age'] ) }}">
+                            <check if=" {{ isset(@errors['age']) }}">
                                 {{ @errors['age'] }}
                             </check>
                         </div>
@@ -70,10 +72,18 @@
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
                             <input type="number" class="form-control" id="phone" name="phone" value="{{ @userPhone}}" maxlength="10" >
-                            <check if=" {{ isset( @errors['phone'] ) }}">
+                            <check if=" {{ isset(@errors['phone']) }}">
                                 {{ @errors['phone'] }}
                             </check>
                         </div>
+                    </fieldset>
+
+                    <!--Premium Member -->
+                    <fieldset>
+                        <legend>Premium Membership</legend>
+                        <label>
+                            <input type="checkbox"> Sign me up for a Premium Account!
+                        </label>
                     </fieldset>
 
 

@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="text" class="form-control" id="email" name="email" value="{{ @userEmail }}">
-                            <check if=" {{ isset( @errors['email'] ) }}">
+                            <check if=" {{ isset(@errors['email']) }}">
                                 {{ @errors['email'] }}
                             </check>
                         </div>
