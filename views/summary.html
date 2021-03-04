@@ -13,28 +13,68 @@
             <br>
 
             <div class="row container">
+                <div class="col ">
+                    <div >
+                        <img src="images/profile.png" alt="profile">
+                        <form action="upload.php" method="post" enctype="multipart/form-data">
+                            Select image to upload:
+                            <input type="file" name="fileToUpload" id="fileToUpload">
+                            <input type="submit" value="Upload Image" name="submit">
+                        </form>
+                    </div>
+                    <div >
+                        <h4>Biography</h4>
 
-            <div class="col border">
-                <p>Name: {{ @SESSION.fname }} {{ @SESSION.lname}} </p>
-                <hr>
-                <p>Gender: {{ @SESSION.gender }}</p>
-                <hr>
-                <p>Age: {{ @SESSION.age }}</p>
-                <hr>
-                <p>Phone: {{ @SESSION.phone }}</p>
-                <hr>
-                <p>Email: {{ @SESSION.email}}</p>
-                <hr>
-                <p>State: {{ @SESSION.state }}</p>
-                <hr>
-                <p>Seeking: {{ @SESSION.seeking }}</p>
-                <hr>
-                <p>Interest: {{ @SESSION.indoors}}, {{@SESSION.outdoors}}</p>
-            </div>
+                        {{ @SESSION.bio}}
 
-            <div class="col ">
+                    </div>
+                    <br>
+                </div>
+
+                <div class="col border">
+                    <hr>
+                    <p>Name: {{ @SESSION.fname }} {{ @SESSION.lname}} </p>
+                    <p>Gender: {{ @SESSION.gender }}</p>
+                    <hr>
+                    <p>Age: {{ @SESSION.age }}</p>
+                    <hr>
+                    <p>Phone: {{ @SESSION.phone }}</p>
+                    <hr>
+                    <p>Email: {{ @SESSION.email}}</p>
+                    <hr>
+                    <p>State: {{ @SESSION.state }}</p>
+                    <hr>
+                    <p>Seeking: {{ @SESSION.seeking }}</p>
+                    <hr>
+                    <p>Interest: {{ @SESSION.indoors}}, {{@SESSION.outdoors}}</p>
+                </div>
+            <!--<div class="col border">
+                <p>Name: {{ @SESSION.normalMember->getFname() }} {{ @SESSION.normalMember->getlname() }} </p>
+                <hr>
+                <p>Gender: {{ @SESSION.normalMember->getGender() }}</p>
+                <hr>
+                <p>Age: {{ @SESSION.normalMember->getAge() }}</p>
+                <hr>
+                <p>Phone: {{ @SESSION.normalMember->getPhone() }}</p>
+                <hr>
+                <p>Email: {{ @SESSION.normalMember->getEmail() }}</p>
+                <hr>
+                <p>State: {{ @SESSION.normalMember->getState() }}</p>
+                <hr>
+                <p>Seeking: {{ @SESSION.normalMember->getSeeking() }}</p>
+                <hr>
+                <p>Interest: {{ @SESSION.premiumMember->getIndoorInterests() }}, {{@SESSION.premiumMember->getOutdoorInterests() }}</p>
+            </div>-->
+
+
+            <!--<div class="col ">
                 <div >
                     <img src="images/profile.png" alt="profile">
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        Select image to upload:
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="submit" value="Upload Image" name="submit">
+                    </form>
                 </div>
                 <div >
                     <h4>Biography</h4>
@@ -43,7 +83,7 @@
 
                 </div>
                 <br>
-            </div>
+            </div>-->
 
         </div>
         <br><br><br><br><br>
