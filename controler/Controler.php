@@ -43,6 +43,7 @@ class Controler
             if ($validator->validName($userFirstName)) {
                 $_SESSION['fname'] = $userFirstName;
                 $normalMember->setFname($userFirstName);
+                $premiumMember->setFname($userFirstName);//added
             }
             else {//not valid firstname
                 $this->_f3->set('errors["fname"]', "Please enter a name!! and must be valid");
@@ -52,6 +53,7 @@ class Controler
             if ($validator->validName($userLastName)) {
                 $_SESSION['lname'] = $userLastName;
                 $normalMember->setLname($userLastName);
+                $premiumMember->setLname($userLastName);//added
 
             }
             else {//not valid last name
@@ -62,6 +64,7 @@ class Controler
             if ($validator->validAge($userAge) && $userAge >= 18 && $userAge <= 118) {
                 $_SESSION['age'] = $userAge;
                 $normalMember->setAge($userAge);
+                $premiumMember->setAge($userAge);//added
             } //invalid name or not in range
             else {
                 $this->_f3->set('errors["age"]', "Please enter a age (age in range 18-118)");
@@ -75,6 +78,7 @@ class Controler
                 if($validator->validGenders($userGender)) {
                     $_SESSION['gender'] = $userGender;
                     $normalMember->setGender($userGender);
+                    $premiumMember->setGender($userGender);//added
                 }
                 //not valid gender
                 else {
@@ -87,6 +91,7 @@ class Controler
             if($validator->validPhone($userPhone)){
                 $_SESSION['phone'] = $userPhone;
                 $normalMember->setPhone($userPhone);
+                $premiumMember->setPhone($userPhone);//added
             }
             //invalid name or not in range
             else {
@@ -95,21 +100,22 @@ class Controler
 
             //$memberChoice = $_POST['memberChoice'];
 
-            if(isset($userChoice))
+            if(isset($_POST['memberChoice']))
             {
                 //$memberChoice = new PremiumMember();
-                $_SESSION['memberChoice'] = $userChoice;//new PremiumMember();
+                $_SESSION['memberChoice'] = new PremiumMember();
             }
 //            else
 //            {
 //                //$memberChoice = new Member("","",0,"","","","","","");
-//                $_SESSION['memberChoice'] = new Member("","",0,"","","","","","");
+                $_SESSION['memberChoice'] = new Member("","",0,"","","","","","");
 //
 //            }
 
 //If there are no errors, redirect to /profile
             if (empty($this->_f3->get('errors'))) {
                 $_SESSION['normalMember'] = $normalMember;
+                $_SESSION['premiumMember'] = $premiumMember;//added
                 $this->_f3->reroute('/profile');
             }
         }
@@ -147,6 +153,7 @@ class Controler
                 $_SESSION['email'] = $userEmail;
                 //$normalMember->setEmail($userEmail);
                 $_SESSION['normalMember']->setEmail($userEmail);
+                $_SESSION['premiumMember']->setEmail($userEmail);//added
             } //not valid email
             else {
                 $this->_f3->set('errors["email"]', "Please enter a email and it need to be valid");
@@ -160,7 +167,8 @@ class Controler
                 if ($validator->validGenders($userSeeking)) {
                     $_SESSION['seeking'] = $userSeeking;
 //                    //$normalMember->setSeeking($userSeeking);
-                    //$_SESSION['normalMember']->setSeeking($userSeeking);
+                    $_SESSION['normalMember']->setSeeking($userSeeking);
+                    $_SESSION['premiumMember']->setSeeking($userSeeking);//added
 
                 } //not valid gender
                 else {
@@ -173,6 +181,7 @@ class Controler
                 $_SESSION['bio'] = $userBio;
 //                //$normalMember->setBio($userBio);
                 $_SESSION['normalMember']->setBio($userBio);
+                $_SESSION['premiumMember']->setBio($userBio);//added
 
             }
 //            else {//not valid firstname
@@ -186,6 +195,7 @@ class Controler
 
 //                //$normalMember->setState($userState);
                 $_SESSION['normalMember']->setState($userState);
+                $_SESSION['premiumMember']->setState($userState);//added
 
             }
 
@@ -225,7 +235,7 @@ class Controler
                 //valid indoor interest values
                 if ($validator->validIndoor($userIndoors)){
                     $_SESSION['indoors'] = implode(", ",$userIndoors);
-                    $_SESSION['premiumMember'] = $premiumMember;
+                    //$_SESSION['premiumMember'] = $premiumMember;
 
                     $indoorString = implode(", ",$userIndoors);
                     //$premiumMember->setInDoorInterests($userIndoors);
@@ -289,14 +299,19 @@ class Controler
         //print_r($_SESSION['normalMember']);
         //print_r($_SESSION['premiumMember']);
         //print_r($_SESSION['memberChoice']);
-        if (!isset($_SESSION['memberChoice']))
-        {
-            print_r($_SESSION['normalMember']);
-        }
-        else {
-            print_r($_SESSION['normalMember']);
-            print_r($_SESSION['premiumMember']);
-        }
+//        if (!isset($_SESSION['memberChoice']))
+//        {
+//            print_r($_SESSION['normalMember']);
+//        }
+//        else {
+//            //print_r($_SESSION['normalMember']);
+//            print_r($_SESSION['premiumMember']);
+
+//        }
+
+        print_r($_SESSION['normalMember']);
+        echo "<p></p>";
+        print_r($_SESSION['premiumMember']);
 
 
 
