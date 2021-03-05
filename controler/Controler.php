@@ -103,14 +103,16 @@ class Controler
             if(isset($_POST['memberChoice']))
             {
                 //$memberChoice = new PremiumMember();
+                $_SESSION['memberChoice'] = $userChoice;
                 $_SESSION['memberChoice'] = new PremiumMember();
             }
-//            else
-//            {
+            else {
+                $_SESSION['memberChoice'] = $userChoice;
+
 //                //$memberChoice = new Member("","",0,"","","","","","");
                 $_SESSION['memberChoice'] = new Member("","",0,"","","","","","");
-//
-//            }
+
+            }
 
 //If there are no errors, redirect to /profile
             if (empty($this->_f3->get('errors'))) {
@@ -128,8 +130,9 @@ class Controler
         $this->_f3->set('userAge', isset($userAge) ? $userAge : "");
         $this->_f3->set('userGender', isset($userGender) ? $userGender : "");
         $this->_f3->set('userPhone', isset($userPhone) ? $userPhone : "");
+        $this->_f3->set('userChoice', isset($userChoice) ? $userChoice: "");
 
-
+        //var_dump($_SESSION['memberChoice']);
         //display a view
         $view = new Template();
         echo $view->render('views/personalinfo.html');
@@ -201,7 +204,12 @@ class Controler
 
             //If there are no errors, redirect to /profile
             if (empty($this->_f3->get('errors'))) {
-                $this->_f3->reroute('/interest');  //GET
+                if ($_SESSION['memberChoice'] != NULL) {
+                    $this->_f3->reroute('/interest');  //GET
+                }
+                else {
+                    $this->_f3->reroute('/summary');  //GET
+                }
             }
 
         }
@@ -224,8 +232,8 @@ class Controler
     {
         global $validator;
         global $dataLayer;
-        global $normalMember;
-        global $premiumMember;
+//        global $normalMember;
+//        global $premiumMember;
 
         //if the form has been submitted
         if ($_SERVER['REQUEST_METHOD']=='POST') {
@@ -308,10 +316,20 @@ class Controler
 //            print_r($_SESSION['premiumMember']);
 
 //        }
+//        if (isset($_POST['memberChoice'])){
+//            print_r($_SESSION['normalMember']);
+//
+//        }
+//        else {
+//            print_r($_SESSION['premiumMember']);
+//        }
+
 
         print_r($_SESSION['normalMember']);
         echo "<p></p>";
+        echo "<p></p>";
         print_r($_SESSION['premiumMember']);
+
 
 
 

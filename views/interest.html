@@ -38,8 +38,8 @@
                         <legend>Outdoor Interest</legend>
 
                         <repeat group=" {{ @outdoors }}" value="{{ @outdoor }}">
-                        <input type="checkbox" id="outdoor" name="outdoors[]" value="{{ @outdoor }}">
-                        <label for="outdoor"> {{ @outdoor }}</label>
+                        <label><input type="checkbox" id="outdoor" name="outdoors[]" value="{{ @outdoor }}">
+                            {{ @outdoor }}</label>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     </repeat>
                     </fieldset>
