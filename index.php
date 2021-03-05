@@ -32,63 +32,36 @@ $controler = new Controler($f3);
 //set a debug
 $f3 -> set('DEBUG',3);
 
-//if (isset($_POST['memberChoice'])) {
 // define a default route
     $f3->route('GET /', function () {
         global $controler;
         $controler->home();
-//    $view = new Template();
-//    echo $view -> render('views/home.html');
+
     });
 
 //route for personal info
-    $f3->route('GET|POST /personal', function ($f3) {
+    $f3->route('GET|POST /personal', function () {
         global $controler;
         $controler->personal();
     });
 
 //route for profile
-    $f3->route('GET|POST /profile', function ($f3) {
+    $f3->route('GET|POST /profile', function () {
         global $controler;
         $controler->profile();
     });
 //route for interest
-    $f3->route('GET|POST /interest', function ($f3) {
+    $f3->route('GET|POST /interest', function () {
         global $controler;
         $controler->interest();
 
     });
+//route for summary
     $f3->route('GET /summary', function () {
 
         global $controler;
         $controler->summary();
     });
-//}
-//else {
-//    $f3->route('GET /', function () {
-//        global $controler;
-//        $controler->home();
-////    $view = new Template();
-////    echo $view -> render('views/home.html');
-//    });
-//
-////route for personal info
-//    $f3->route('GET|POST /personal', function ($f3) {
-//        global $controler;
-//        $controler->personal();
-//    });
-//
-////route for profile
-//    $f3->route('GET|POST /profile', function ($f3) {
-//        global $controler;
-//        $controler->profile();
-//    });
-//    $f3->route('GET /summary', function () {
-//
-//        global $controler;
-//        $controler->summary();
-//    });
-//}
 
 //run fat free
 $f3 -> run();

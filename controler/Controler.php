@@ -78,7 +78,7 @@ class Controler
                 if($validator->validGenders($userGender)) {
                     $_SESSION['gender'] = $userGender;
                     $normalMember->setGender($userGender);
-                    $premiumMember->setGender($userGender);//added
+                   $premiumMember->setGender($userGender);//added
                 }
                 //not valid gender
                 else {
@@ -121,6 +121,8 @@ class Controler
                 $this->_f3->reroute('/profile');
             }
         }
+
+//        var_dump($_SESSION['memberChoice']);
 
         //set the value
         $this->_f3->set('genders', $dataLayer->getGenders());
@@ -204,7 +206,7 @@ class Controler
 
             //If there are no errors, redirect to /profile
             if (empty($this->_f3->get('errors'))) {
-                if ($_SESSION['memberChoice'] != NULL) {
+                if ($_SESSION['memberChoice'] == new PremiumMember()) {
                     $this->_f3->reroute('/interest');  //GET
                 }
                 else {
@@ -213,6 +215,8 @@ class Controler
             }
 
         }
+//        var_dump($_SESSION['memberChoice']);
+
         //set value for state
         $this->_f3->set('states',$dataLayer->getState());
         $this->_f3->set('seekings', $dataLayer->getGenders());
@@ -233,7 +237,7 @@ class Controler
         global $validator;
         global $dataLayer;
 //        global $normalMember;
-//        global $premiumMember;
+        global $premiumMember;
 
         //if the form has been submitted
         if ($_SERVER['REQUEST_METHOD']=='POST') {
@@ -279,6 +283,8 @@ class Controler
                 $this->_f3->reroute('/summary');
             }
         }
+//        var_dump($_SESSION['memberChoice']);
+
         //set value for indoor and outdoor
         $this->_f3->set('indoors',$dataLayer->getIndoorInterest());
         $this->_f3->set('outdoors',$dataLayer->getOutdoorInterest());
@@ -291,63 +297,22 @@ class Controler
     function summary()
     {
 
+//        var_dump($_SESSION['memberChoice']);
 
 
         $view = new Template();
         echo $view->render('views/summary.html');
-//        if (isset($_POST['memberChoice'])){
-//            print_r($_SESSION['normalMember']);
-//            print_r($_SESSION['premiumMember']);
-//
-//        }
-//        else{
-//            print_r($_SESSION['normalMember']);
-//
-//        }
-        //print_r($_SESSION['normalMember']);
-        //print_r($_SESSION['premiumMember']);
-        //print_r($_SESSION['memberChoice']);
-//        if (!isset($_SESSION['memberChoice']))
-//        {
-//            print_r($_SESSION['normalMember']);
-//        }
-//        else {
-//            //print_r($_SESSION['normalMember']);
-//            print_r($_SESSION['premiumMember']);
 
-//        }
-//        if (isset($_POST['memberChoice'])){
-//            print_r($_SESSION['normalMember']);
-//
-//        }
-//        else {
-//            print_r($_SESSION['premiumMember']);
-//        }
+        if ($_SESSION['memberChoice'] == new PremiumMember()){
+            print_r($_SESSION['premiumMember']);
+        }
+        else {
+            print_r($_SESSION['normalMember']);
+        }
 
-
-        print_r($_SESSION['normalMember']);
-        echo "<p></p>";
-        echo "<p></p>";
-        print_r($_SESSION['premiumMember']);
-
-
-
-
-
+        //destroy Session
         session_destroy();
 
     }
-//if(isset($_POST['memberChoice']))
-//{
-//    //$memberChoice = new PremiumMember();
-//$_SESSION['memberChoice'] = new PremiumMember();
-//}
-//else
-//{
-//    //$memberChoice = new Member("","",0,"","","","","","");
-//    $_SESSION['memberChoice'] = new Member("","",0,"","","","","","");
-//
-//}
-
 
 }
