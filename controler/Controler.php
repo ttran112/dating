@@ -322,7 +322,7 @@ class Controler
     function memberSummary()
     {
         $members = $GLOBALS['dataLayer']->getMembers();
-        $this->_f3->set('member', $members);
+        $this->_f3->set('members', $members);
         //Display a view
         $view = new Template();
         echo $view->render('views/member-summary.html');
