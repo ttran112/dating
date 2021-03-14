@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" >
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" >
+
+    <title>member</title>
+</head>
+<body>
+<h1>Member Summary</h1><div class="container-fluid" id="table-main">
+    <table id="order-table" class="display" >
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>State</td>
+            <td>Gender</td>
+            <td>Seeking</td>
+
+<!--            <td>Premium</td>-->
+<!--            <td>Interest</td>-->
+        </tr>
+        </thead>
+        <tbody>
+        <repeat group="{{ @members }}" value="{{ @member }}">
+            <tr>
+                <td>{{ @member['member_id']}}</td>
+                <td>{{ @member['fname'] }} {{ @member['lname'] }} </td>
+                <td>{{ @member['age'] }}</td>
+                <td>{{ @member['phone'] }}</td>
+                <td>{{ @member['email'] }}</td>
+                <td>{{ @member['state'] }}</td>
+                <td>{{ @member['gender'] }}</td>
+                <td>{{ @member['seeking'] }}</td>
+<!--                <td>{{ @member['premium'] }}</td>-->
+<!--                <td>{{ @member['interest'] }}</td>-->
+<!--                <td>{{ @member['image'] }}</td>-->
+            </tr>
+
+        </repeat>
+        </tbody>
+    </table>
+</div>
+
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $('#order-table').DataTable();
+</script>
+</body>
+</html>
