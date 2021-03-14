@@ -2,9 +2,10 @@
 class validation
 {
     private $_dataLayer;
-    function __construct()
+    function __construct($dataLayer)
     {
-        $this->_dataLayer = new DataLayer();
+        //$this->_dataLayer = new DataLayer();
+        $this->_dataLayer = $dataLayer;
     }
 
     function validName($name)

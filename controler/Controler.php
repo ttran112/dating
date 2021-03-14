@@ -298,6 +298,11 @@ class Controler
     {
 
 //        var_dump($_SESSION['memberChoice']);
+        global $dataLayer;
+//        global $normalMember;
+//        $dataLayer->insertMember($normalMember);
+
+        $dataLayer->insertMember($_SESSION['normalMember']);
 
 
         $view = new Template();
@@ -313,6 +318,14 @@ class Controler
         //destroy Session
         session_destroy();
 
+    }
+    function memberSummary()
+    {
+        $members = $GLOBALS['dataLayer']->getMembers();
+        $this->_f3->set('member', $members);
+        //Display a view
+        $view = new Template();
+        echo $view->render('views/member-summary.html');
     }
 
 }

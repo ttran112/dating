@@ -13,6 +13,8 @@ error_reporting(E_ALL);
 
 //require the autoload file
 require_once ('vendor/autoload.php');
+require $_SERVER['DOCUMENT_ROOT'].'/../config.php';
+
 //require_once ('class/Member.php');
 //require_once ('class/PremiumMember.php');
 //require_once ('model/data-layer.php');
@@ -24,8 +26,12 @@ session_start();
 
 //create an instance of the Base class
 $f3 = Base::instance();
-$validator = new validation();
-$dataLayer = new DataLayer();
+//$validator = new validation();
+//$dataLayer = new DataLayer();
+$dataLayer = new DataLayer($dbh);
+$validator = new validation($dataLayer);
+
+
 $normalMember = new Member("","",0,'',"","","","","");
 $premiumMember = new PremiumMember();
 $controler = new Controler($f3);
@@ -62,6 +68,12 @@ $f3 -> set('DEBUG',3);
         global $controler;
         $controler->summary();
     });
+    //define an member summary route
+$f3->route('GET /member-summary', function (){
+    global $controler;
+    $controler->memberSummary();
+});
+
 
 //run fat free
 $f3 -> run();
