@@ -5,11 +5,21 @@
 
 class DataLayer
 {
+    //field
     private $_dbh;
+
+    /**
+     * DataLayer constructor.
+     * @param $dbh
+     */
     function __construct($dbh)
     {
         $this->_dbh = $dbh;
     }
+
+    /**
+     * @return mixed get memebr in database
+     */
     function getMembers()
     {
         //Define the query
@@ -29,6 +39,10 @@ class DataLayer
         return $result;
     }
 
+    /**
+     * @param $member
+     * insert in database member value
+     */
     function insertMember($member)
     {
         //var_dump($member);
@@ -58,8 +72,11 @@ class DataLayer
         $id = $this->_dbh->lastInsertId();
     }
 
-
-    function getInterest()
+    /**
+     * @param $member_id
+     * @return mixed id redult
+     */
+    function getInterest($member_id)
     {
         //Define the query
         $sql = "SELECT * FROM dating";
@@ -77,6 +94,17 @@ class DataLayer
         //var_dump($result);
         return $result;
     }
+
+    /**
+     * @param $member_id
+     * was search for but not use
+     */
+    function getMember($member_id)
+    {
+
+    }
+
+
 /*
  * CREATE TABLE dating
 (

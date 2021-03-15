@@ -20,7 +20,7 @@ class Controler
     }
 
     /**
-     * display personal info page
+     * valid and display personal info page
      */
     function personal()
     {
@@ -140,6 +140,10 @@ class Controler
         echo $view->render('views/personalinfo.html');
     }
 
+    /**
+     * valid and display profile page
+     */
+
     function profile()
     {
         global $validator;
@@ -232,6 +236,9 @@ class Controler
         echo $view -> render('views/profile.html');
     }
 
+    /**
+     * valid and display interest page
+     */
     function interest()
     {
         global $validator;
@@ -294,6 +301,9 @@ class Controler
         echo $view -> render('views/interest.html');
     }
 
+    /**
+     * valid and display summary
+     */
     function summary()
     {
 
@@ -325,6 +335,10 @@ class Controler
         session_destroy();
 
     }
+
+    /**
+     * valid and display admin
+     */
     function memberSummary()
     {
         $members = $GLOBALS['dataLayer']->getMembers();
