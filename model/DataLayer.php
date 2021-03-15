@@ -31,7 +31,7 @@ class DataLayer
 
     function insertMember($member)
     {
-        var_dump($member);
+        //var_dump($member);
         //Define the query
         $sql = "INSERT INTO dating(fname, lname, age, gender, phone, email, state, seeking, bio) 
 	            VALUES (:fname, :lname, :age, :gender, :phone, :email, :state , :seeking, :bio)";
