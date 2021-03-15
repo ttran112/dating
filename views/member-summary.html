@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" >
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" >
-
+    <link rel="icon" href="images/guestbook.jpg" type="image/jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>member</title>
 </head>
 <body>
 <h1>Member Summary</h1><div class="container-fluid" id="table-main">
-    <table id="order-table" class="display" >
+    <table id="order-table" class=" table" >
         <thead>
         <tr>
             <td>ID</td>
@@ -20,9 +20,10 @@
             <td>State</td>
             <td>Gender</td>
             <td>Seeking</td>
+            <td>Bio</td>
 
 <!--            <td>Premium</td>-->
-<!--            <td>Interest</td>-->
+            <td>Interest</td>
         </tr>
         </thead>
         <tbody>
@@ -36,8 +37,9 @@
                 <td>{{ @member['state'] }}</td>
                 <td>{{ @member['gender'] }}</td>
                 <td>{{ @member['seeking'] }}</td>
+                <td>{{ @member['bio']}}</td>
 <!--                <td>{{ @member['premium'] }}</td>-->
-<!--                <td>{{ @member['interest'] }}</td>-->
+                <td>{{ @member['interest'] }}</td>
 <!--                <td>{{ @member['image'] }}</td>-->
             </tr>
 
@@ -45,6 +47,13 @@
         </tbody>
     </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 

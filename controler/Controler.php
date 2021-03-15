@@ -301,8 +301,14 @@ class Controler
         global $dataLayer;
 //        global $normalMember;
 //        $dataLayer->insertMember($normalMember);
+        if ($_SESSION['memberChoice'] == new PremiumMember()) {
+            $dataLayer->insertMember($_SESSION['premiumMember']);
 
-        $dataLayer->insertMember($_SESSION['normalMember']);
+        }
+        else {
+            $dataLayer->insertMember($_SESSION['normalMember']);
+
+        }
 
 
         $view = new Template();

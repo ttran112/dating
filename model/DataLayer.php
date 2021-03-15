@@ -13,7 +13,7 @@ class DataLayer
     function getMembers()
     {
         //Define the query
-        $sql = "SELECT * FROM dating";
+        $sql = "SELECT * FROM dating ";
 
         //Prepare the statement
         $statement = $this->_dbh->prepare($sql);
@@ -50,7 +50,7 @@ class DataLayer
         $statement->bindParam(':seeking', $member->getSeeking(), PDO::PARAM_STR);
         $statement->bindParam(':bio', $member->getBio(), PDO::PARAM_STR);
         //$statement->bindParam(':premium', $member->getFood(), PDO::PARAM_BOOL);
-        //$statement->bindParam(':interest', $member->getIndoorInterest(), PDO::PARAM_STR);
+        //$statement->bindParam(':interest', $member->getIndoorInterests(), PDO::PARAM_STR);
         //$statement->bindParam(':image', $member->getCondiments(), PDO::PARAM_STR);
 
         //Execute
